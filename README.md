@@ -1,0 +1,1 @@
+This repository contains a class which will convert default array to Realm List. It will work for both premitive types and custom class. Prerequisite to run this class is Ofcourse Install RealmSwift and ObjectMapper
