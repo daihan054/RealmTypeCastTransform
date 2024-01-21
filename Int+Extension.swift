@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RoutableLogger
 
 extension Int {
     
@@ -15,20 +14,17 @@ extension Int {
         let roundedDouble = double.rounded()
         if let int = Int(exactly: roundedDouble) {
             if roundedDouble != double {
-                RoutableLogger.logWarning("[\(file.fileName):\(line)] Double casted to Int with rounding: \(double) -> \(int)")
             }
             
             return int
             
         } else {
-            RoutableLogger.logError("Unable to cast Double to Int", data: ["double": double], file: file, function: function, line: line)
             return nil
         }
     }
     
     static func safeFrom(_ string: String, file: String = #file, function: String = #function, line: UInt = #line) -> Int? {
         if string.isNil {
-            RoutableLogger.logDebug("[\(file.fileName):\(line)] Received '\(string)' string instead of an Int. Considering it as `nil`.")
             return nil
         }
         
@@ -39,7 +35,6 @@ extension Int {
             return safeFrom(double, file: file, function: function, line: line)
             
         } else {
-            RoutableLogger.logError("Unable to cast String to Int", data: ["string": string], file: file, function: function, line: line)
             return nil
         }
     }

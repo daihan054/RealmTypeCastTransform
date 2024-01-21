@@ -7,20 +7,17 @@
 //
 
 import Foundation
-import RoutableLogger
 
 extension Bool {
     
     static func safeFrom(_ string: String, file: String = #file, function: String = #function, line: UInt = #line) -> Bool? {
-        if string.isNil {
-            RoutableLogger.logDebug("[\(file.fileName):\(line)] Received '\(string)' string instead of a Bool. Considering it as `nil`.")
+        if string.isEmpty || string == "-" {
             return nil
         }
         
         if let bool = string.asBool {
             return bool
         } else {
-            RoutableLogger.logError("Unable to cast String to Bool", data: ["string": string], file: file, function: function, line: line)
             return nil
         }
     }

@@ -7,7 +7,6 @@
 //
 
 import ObjectMapper
-import RoutableLogger
 
 /// Transforms value of type Any to generic type. Tries to typecast if possible.
 public class TypeCastTransform<T>: TransformType {
@@ -30,7 +29,6 @@ public class TypeCastTransform<T>: TransformType {
         } else if T.self == String.self {
             return StringTransform.shared.transformFromJSON(value) as? T
         } else {
-            RoutableLogger.logError("Can not cast value of type \(type(of: value!)) to type \(Object.self)", data: ["value": value])
             return nil
         }
     }

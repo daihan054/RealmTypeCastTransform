@@ -8,7 +8,6 @@
 
 import Foundation
 import ObjectMapper
-import RoutableLogger
 
 /// Transforms value of type Any to Double. Tries to typecast if possible.
 public class DoubleTransform: TransformType {
@@ -31,7 +30,6 @@ public class DoubleTransform: TransformType {
         } else if let number = value as? NSNumber {
             return number.doubleValue
         } else {
-            RoutableLogger.logError("Can not cast value of type \(type(of: value!)) to type \(Object.self)", data: ["value": value])
             return nil
         }
     }
